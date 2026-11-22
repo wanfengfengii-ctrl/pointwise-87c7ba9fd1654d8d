@@ -69,7 +69,9 @@ class LabTestCase(unittest.TestCase):
 
     def count(self, db, table):
         allowed = {'panel_batches', 'panel_trays', 'bench_revisions', 'issued_v1',
-                   'accepted_v1', 'v1_reports', 'report_receipts', 'test_commit_gate'}
+                   'issued_v2', 'accepted_v1', 'accepted_v2', 'v1_reports',
+                   'report_receipts', 'proof_reports', 'proof_receipts',
+                   'test_commit_gate'}
         self.assertIn(table, allowed)
         return db.execute(f'SELECT count(*) FROM {table}').fetchone()[0]
 

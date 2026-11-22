@@ -2,6 +2,7 @@ import sqlite3
 from uuid import uuid4
 
 from analysis.requests import V1Request
+from reports.proof_records import initialize_proof_reports
 from reports.records import V1Report, report_from_rows
 from reports.transactions import report_transaction
 
@@ -24,6 +25,7 @@ def initialize_reports(db: sqlite3.Connection) -> None:
             report_id INTEGER PRIMARY KEY REFERENCES v1_reports(report_id),
             receipt_id TEXT NOT NULL UNIQUE
         )''')
+    initialize_proof_reports(db)
 
 
 def publish_v1(db: sqlite3.Connection, request: V1Request) -> V1Report:

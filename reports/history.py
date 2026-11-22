@@ -1,6 +1,8 @@
 import sqlite3
 
+from reports.proof_records import load_report
 from reports.records import V1Report, report_from_rows
+from panel.markers import validate_identifier
 
 
 def read_v1(db: sqlite3.Connection, report_id: int) -> V1Report:
@@ -15,3 +17,8 @@ def read_v1(db: sqlite3.Connection, report_id: int) -> V1Report:
     if row is None:
         raise KeyError(report_id)
     return report_from_rows(row[:9], row[9:])
+
+
+def read_proof(db: sqlite3.Connection, report_id: str) -> dict:
+    validate_identifier(report_id)
+    return load_report(db, report_id)
