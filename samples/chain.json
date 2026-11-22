@@ -1,0 +1,10 @@
+{
+  "batch_id": "demo-batch",
+  "tray_id": "left",
+  "unit": "MPa",
+  "markers": ["A", "B"],
+  "members": ["A", "B", "x", "y"],
+  "observations": [["A", 0, "1/3"], ["B", 0, 1], ["x", 0, "2/3"], ["y", "2/6", 1]],
+  "certificates": [["A", "x"], ["x", "B"]],
+  "expected_bounds": {"A": [1, 2], "B": [3, 4]}
+}
